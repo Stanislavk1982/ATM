@@ -9,8 +9,8 @@ public class Card {
     public boolean checkCorrectNumber(String idCard) {
         int tempSum = 0;
         char number;
-            for (int i = 1; i < idCard.length() + 1; i++) {
-            number = idCard.charAt(i);
+        for (int i = 1; i < idCard.length() + 1; i++) {
+            number = idCard.charAt(i - 1);
             if (i % 2 == 1) {
                 tempSum += Integer.parseInt(String.valueOf(number));
             } else {

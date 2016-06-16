@@ -12,10 +12,10 @@ public class Security {
     }
 
     public boolean isExpire() {
-        Calendar expireDate=Calendar.getInstance();
-        Calendar dateNow  = Calendar.getInstance();
-        expireDate.set(2018,11,30);
-        if (expireDate.compareTo(dateNow)>0) {
+        Calendar expireDate = Calendar.getInstance();
+        Calendar dateNow = Calendar.getInstance();
+        expireDate.set(2018, 11, 30);
+        if (expireDate.compareTo(dateNow) > 0) {
             return true;
         }
         return false;

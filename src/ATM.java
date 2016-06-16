@@ -23,11 +23,11 @@ public class ATM {
         } else {
             card.setIdCard(idCard);
         }
-        cardCorrect=true;
+        cardCorrect = true;
     }
 
     public void enterPicCode(int pinCode) throws ErrorSecurity {
-        if (pinCode < 4 || pinCode > 8) {
+        if (pinCode < 999 || pinCode > 9999999) {
             throw new ErrorSecurity("You enter incorrect PinCode");
         }
         if (!security.pinCodForCard(pinCode)) {
