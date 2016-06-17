@@ -3,7 +3,9 @@ public class Card {
     private String paymentSystem;
 
 
-    public Card() {
+    public Card(String idCard, String paymentSystem) {
+        this.idCard = idCard;
+        this.paymentSystem=paymentSystem;
     }
 
     public boolean checkCorrectNumber(String idCard) {

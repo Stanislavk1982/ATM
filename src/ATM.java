@@ -13,20 +13,16 @@ public class ATM {
         this.card = card;
     }
 
-    public void insertionOfTheCard(String idCard, String paymentSystem) throws IncorrectCard {
+    public void insertionOfTheCard(Card card) throws IncorrectCard {
         boolean sensorOfTheReader = true;
         if (!sensorOfTheReader) {
             throw new IncorrectCard("You inserted not banking card");
         }
-        if (paymentSystem.equals("MC") || paymentSystem.equals("Visa")) {
-            card.setPaymentSystem(paymentSystem);
-        } else
+        if (!card.getPaymentSystem().equals("MC") || !card.getPaymentSystem().equals("Visa")) {
             throw new IncorrectCard("This Payment system isn't supported");
-
-        if (!card.checkCorrectNumber(idCard)) {
+        }
+        if (!card.checkCorrectNumber(card.getIdCard())) {
             throw new IncorrectCard("You Card is fake");
-        } else {
-            card.setIdCard(idCard);
         }
         cardCorrect = true;
     }

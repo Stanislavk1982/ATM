@@ -1,6 +1,6 @@
 public class MainATM {
     public static void main(String[] args) {
-        Card card = new Card();
+        Card card = new Card("5610000000000001", "Visa");
         ATM atm = new ATM(card);
         System.out.println("Enter Card");
         try {
