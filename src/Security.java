@@ -4,6 +4,8 @@ public class Security {
     public Security() {
     }
 
+    Bank bank = new Bank();
+
     public boolean pinCodForCard(int pinCode) {
         if (pinCode == 54321) {
             return true;
@@ -19,6 +21,18 @@ public class Security {
             return true;
         }
         return false;
+    }
+    public double moneyAccount(Card card, int pinCode) {
+        if (pinCodForCard(pinCode)) {
+            return bank.checkSum(card);
+        }
+        return -1;
+    }
 
+    public boolean moneyTransfer(Card card, int pincode, int sum) {
+        if (pinCodForCard(pincode)) {
+            return bank.getMoneyFromAccount(card,sum);
+        }
+        return false;
     }
 }
