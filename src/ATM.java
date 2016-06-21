@@ -6,10 +6,16 @@ public class ATM {
     Security security = new Security();
     private boolean cardCorrect = false;
     private boolean authentication = false;
-    private int pinCode;
+    private int pinCode=5432;
     private int sumInATM = 1234567;
+    private static ATM atm = null;
 
-    public ATM(Card card) {
+    private ATM() {
+
+
+    }
+
+    public void setCard(Card card) {
         this.card = card;
     }
 
@@ -18,7 +24,7 @@ public class ATM {
         if (!sensorOfTheReader) {
             throw new IncorrectCard("You inserted not banking card");
         }
-        if (!card.getPaymentSystem().equals("MC") || !card.getPaymentSystem().equals("Visa")) {
+        if (isTruePaySystem(card)) {
             throw new IncorrectCard("This Payment system isn't supported");
         }
         if (!card.checkCorrectNumber(card.getIdCard())) {
@@ -27,13 +33,17 @@ public class ATM {
         cardCorrect = true;
     }
 
+    private boolean isTruePaySystem(Card card) {
+        return !card.getPaymentSystem().equals("MC") && !card.getPaymentSystem().equals("Visa");
+    }
+
     public void enterPicCode(int pinCode) throws ErrorSecurity {
         if (pinCode < 999 || pinCode > 9999999) {
             throw new ErrorSecurity("You enter incorrect PinCode");
         }
-        if (!security.pinCodForCard(pinCode)) {
-            throw new ErrorSecurity("You PinCode isn't true");
-        }
+        //if (security.pinCodForCard(pinCode)) {
+        //    throw new ErrorSecurity("You PinCode isn't true");
+        //}
         if (!security.isExpire()) {
             throw new ErrorSecurity("You card is expire");
         }
@@ -47,7 +57,8 @@ public class ATM {
         System.out.println("Authefiation OK");
         System.out.println("Select operation: Check account, Money transfer");
         Scanner scanner = new Scanner(System.in);
-        String choise = scanner.next();
+        String choise = "1";
+                //scanner.next();
         switch (choise) {
             case "1":
                 windowAccount();
@@ -97,6 +108,13 @@ public class ATM {
     private void printBill(int sum) {
         Calendar now = Calendar.getInstance();
         System.out.println("Bill. You removed: " + sum + " Uah. Date is:  " + now);
+    }
+
+    public static ATM newInstance() {
+        if (atm == null) {
+            atm = new ATM();
+        }
+        return atm;
     }
 
 }

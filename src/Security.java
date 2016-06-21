@@ -6,11 +6,10 @@ public class Security {
 
     Bank bank = new Bank();
 
-    public boolean pinCodForCard(int pinCode) {
-        if (pinCode == 54321) {
-            return true;
-        }
-        return false;
+    public void pinCodForCard(int pinCode) throws ErrorSecurity {
+        if (pinCode != 54321)
+        {
+        throw new ErrorSecurity("Pin code is false");}
     }
 
     public boolean isExpire() {
@@ -22,17 +21,19 @@ public class Security {
         }
         return false;
     }
-    public double moneyAccount(Card card, int pinCode) {
-        if (pinCodForCard(pinCode)) {
-            return bank.checkSum(card);
+    public double moneyAccount(Card card, int pinCode){
+        try {
+            pinCodForCard(pinCode);
+        } catch (ErrorSecurity errorSecurity) {
+            errorSecurity.printStackTrace();
         }
-        return -1;
+        return bank.checkSum(card);
     }
 
     public boolean moneyTransfer(Card card, int pincode, int sum) {
-        if (pinCodForCard(pincode)) {
-            return bank.getMoneyFromAccount(card,sum);
-        }
+      //  if (pinCodForCard(pincode)) {
+       //     return bank.getMoneyFromAccount(card,sum);
+       // }
         return false;
     }
 }

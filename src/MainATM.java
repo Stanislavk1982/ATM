@@ -1,16 +1,17 @@
 public class MainATM {
     public static void main(String[] args) {
-        Card card = new Card("5610000000000001", "Visa");
-        ATM atm = new ATM(card);
+        Card card = new Card("5610000000000001", "MC");
+        ATM atm = ATM.newInstance();
+        atm.setCard(card);
         System.out.println("Enter Card");
         try {
-            atm.insertionOfTheCard("5610000000000001", "Visa");
+            atm.insertionOfTheCard(card);
         } catch (IncorrectCard incorrectCard) {
             incorrectCard.printStackTrace();
         }
         System.out.println("Enter Pin Code");
         try {
-            atm.enterPicCode(54321);
+            atm.enterPicCode(5432);
         } catch (ErrorSecurity errorSecurity) {
             errorSecurity.printStackTrace();
         }

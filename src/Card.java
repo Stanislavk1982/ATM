@@ -34,6 +34,8 @@ public class Card {
     }
 
     public String getPaymentSystem() {
+
+        System.out.println(paymentSystem);
         return paymentSystem;
     }
 
