@@ -2,12 +2,12 @@ package com.java.Stanislav.ATM;
 
 import java.util.Calendar;
 
-public class Security implements SecurityInterface{
+public class Security implements SecurityInterface {
     private Bank bank;
-    public Security(Bank bank) {
-        this.bank=bank;
-    }
 
+    public Security(Bank bank) {
+        this.bank = bank;
+    }
 
 
     public void pinCodForCard(int pinCode) throws ErrorSecurity {
