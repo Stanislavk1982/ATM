@@ -1,16 +1,18 @@
+package com.java.Stanislav.ATM;
+
 import java.util.Calendar;
 import java.util.Scanner;
 
 public class ATM implements ATMInterface {
     private Card card;
-    Security security;
+    SecurityInterface security;
     private boolean cardCorrect = false;
     private boolean authentication = false;
     private int pinCode = 54321;
     private int sumInATM;
     private static ATM atm = null;
 
-    private ATM(int sumInATM, Security security) {
+    private ATM(int sumInATM, SecurityInterface security) {
         this.sumInATM = sumInATM;
         this.security = security;
 
@@ -117,7 +119,7 @@ public class ATM implements ATMInterface {
         System.out.println("Bill. You removed: " + sum + " Uah. Date is:  " + now);
     }
 
-    public static ATM newInstance(int sumInATM, Security security) {
+    public static ATM newInstance(int sumInATM, SecurityInterface security) {
         if (atm == null) {
             atm = new ATM(sumInATM, security);
         }

@@ -1,3 +1,5 @@
+package com.java.Stanislav.ATM;
+
 public interface ATMInterface {
 
     void setCard(Card card);

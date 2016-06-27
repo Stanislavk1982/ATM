@@ -1,8 +1,12 @@
+package com.java.Stanislav.ATM;
+
 public class MainATM {
     public static void main(String[] args) {
         Card card = new Card("5610000000000001", "MC");
-        Security security = new Security();
-        ATMInterface atm = ATM.newInstance(1234567,security);
+        Bank bank = new Bank();
+        SecurityInterface security = new Security(bank);
+
+        ATMInterface atm = ATM.newInstance(1234567, security);
         atm.setCard(card);
         System.out.println("Enter Card");
         try {

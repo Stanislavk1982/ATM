@@ -1,3 +1,5 @@
+package com.java.Stanislav.ATM;
+
 public class Card {
     private String idCard;
     private String paymentSystem;

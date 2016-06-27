@@ -1,10 +1,14 @@
+package com.java.Stanislav.ATM;
+
 import java.util.Calendar;
 
-public class Security {
-    public Security() {
+public class Security implements SecurityInterface{
+    private Bank bank;
+    public Security(Bank bank) {
+        this.bank=bank;
     }
 
-    Bank bank = new Bank();
+
 
     public void pinCodForCard(int pinCode) throws ErrorSecurity {
         if (pinCode != 54321) {

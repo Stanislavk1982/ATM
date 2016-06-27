@@ -1,3 +1,5 @@
+package com.java.Stanislav.ATM;
+
 public class Account {
     public Account(String idCard, double sum, int pinCode) {
         this.idCard = idCard;
