@@ -1,16 +1,18 @@
 import java.util.Calendar;
 import java.util.Scanner;
 
-public class ATM {
+public class ATM implements ATMInterface {
     private Card card;
-    Security security = new Security();
+    Security security;
     private boolean cardCorrect = false;
     private boolean authentication = false;
-    private int pinCode=5432;
-    private int sumInATM = 1234567;
+    private int pinCode = 5432;
+    private int sumInATM;
     private static ATM atm = null;
 
-    private ATM() {
+    private ATM(int sumInATM, Security security) {
+        this.sumInATM = sumInATM;
+        this.security = security;
 
 
     }
@@ -58,7 +60,7 @@ public class ATM {
         System.out.println("Select operation: Check account, Money transfer");
         Scanner scanner = new Scanner(System.in);
         String choise = "1";
-                //scanner.next();
+        //scanner.next();
         switch (choise) {
             case "1":
                 windowAccount();
@@ -68,6 +70,8 @@ public class ATM {
                     windowTransfer();
                 } catch (NotEnougtMoneyInATM notEnougtMoneyInATM) {
                     notEnougtMoneyInATM.printStackTrace();
+                } catch (ErrorSecurity errorSecurity) {
+                    errorSecurity.printStackTrace();
                 }
 
                 break;
@@ -76,18 +80,21 @@ public class ATM {
     }
 
     public void windowAccount() {
-        System.out.println("Sum on Account is : " + security.moneyAccount(card, pinCode));
+        try {
+            System.out.println("Sum on Account is : " + security.moneyAccount(card, pinCode));
+        } catch (ErrorSecurity errorSecurity) {
+            errorSecurity.printStackTrace();
+        }
 
     }
 
-    public void windowTransfer() throws NotEnougtMoneyInATM {
+    public void windowTransfer() throws NotEnougtMoneyInATM, ErrorSecurity {
         System.out.println("Enter sum which you want to get");
         Scanner scanner = new Scanner(System.in);
         String enterSum = scanner.next();
         int sum = Integer.getInteger(enterSum);
-        if (security.moneyTransfer(card, pinCode, sum)) {
-            cashAdvance(sum);
-        }
+        security.moneyTransfer(card, pinCode, sum);
+        cashAdvance(sum);
         printBill(sum);
 
     }
@@ -110,9 +117,9 @@ public class ATM {
         System.out.println("Bill. You removed: " + sum + " Uah. Date is:  " + now);
     }
 
-    public static ATM newInstance() {
+    public static ATM newInstance(int sumInATM, Security security) {
         if (atm == null) {
-            atm = new ATM();
+            atm = new ATM(sumInATM, security);
         }
         return atm;
     }

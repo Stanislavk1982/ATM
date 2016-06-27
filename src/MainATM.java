@@ -1,7 +1,8 @@
 public class MainATM {
     public static void main(String[] args) {
         Card card = new Card("5610000000000001", "MC");
-        ATM atm = ATM.newInstance();
+        Security security = new Security();
+        ATM atm = ATM.newInstance(1234567,security);
         atm.setCard(card);
         System.out.println("Enter Card");
         try {
