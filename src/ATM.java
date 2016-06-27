@@ -6,7 +6,7 @@ public class ATM implements ATMInterface {
     Security security;
     private boolean cardCorrect = false;
     private boolean authentication = false;
-    private int pinCode = 5432;
+    private int pinCode = 54321;
     private int sumInATM;
     private static ATM atm = null;
 

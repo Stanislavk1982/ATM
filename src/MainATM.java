@@ -2,7 +2,7 @@ public class MainATM {
     public static void main(String[] args) {
         Card card = new Card("5610000000000001", "MC");
         Security security = new Security();
-        ATM atm = ATM.newInstance(1234567,security);
+        ATMInterface atm = ATM.newInstance(1234567,security);
         atm.setCard(card);
         System.out.println("Enter Card");
         try {
@@ -12,7 +12,7 @@ public class MainATM {
         }
         System.out.println("Enter Pin Code");
         try {
-            atm.enterPicCode(5432);
+            atm.enterPicCode(54321);
         } catch (ErrorSecurity errorSecurity) {
             errorSecurity.printStackTrace();
         }
