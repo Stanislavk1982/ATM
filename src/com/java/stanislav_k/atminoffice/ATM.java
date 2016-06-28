@@ -1,6 +1,10 @@
-package com.java.Stanislav.ATM;
+package com.java.stanislav_k.atminoffice;
 
-public interface ATMInterface {
+import com.java.stanislav_k.exeption.ErrorSecurity;
+import com.java.stanislav_k.exeption.IncorrectCard;
+import com.java.stanislav_k.exeption.NotEnougtMoneyInATM;
+
+public interface ATM {
 
     void setCard(Card card);
 

@@ -1,6 +1,8 @@
-package com.java.Stanislav.ATM;
+package com.java.stanislav_k.atminoffice;
 
-public interface SecurityInterface {
+import com.java.stanislav_k.exeption.ErrorSecurity;
+
+public interface Security {
 
     void pinCodForCard(int pinCode) throws ErrorSecurity;
 

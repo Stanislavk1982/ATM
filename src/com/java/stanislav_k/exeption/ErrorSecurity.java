@@ -1,4 +1,4 @@
-package com.java.Stanislav.ATM;
+package com.java.stanislav_k.exeption;
 
 public class ErrorSecurity extends Exception {
     public ErrorSecurity(String massege) {

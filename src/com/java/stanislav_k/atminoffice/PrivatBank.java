@@ -1,10 +1,10 @@
-package com.java.Stanislav.ATM;
+package com.java.stanislav_k.atminoffice;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bank {
+public class PrivatBank implements Bank {
 
     private List<Account> accounts = new ArrayList<>();
 

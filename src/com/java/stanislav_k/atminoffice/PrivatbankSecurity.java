@@ -1,11 +1,13 @@
-package com.java.Stanislav.ATM;
+package com.java.stanislav_k.atminoffice;
+
+import com.java.stanislav_k.exeption.ErrorSecurity;
 
 import java.util.Calendar;
 
-public class Security implements SecurityInterface {
+public class PrivatbankSecurity implements Security {
     private Bank bank;
 
-    public Security(Bank bank) {
+    public PrivatbankSecurity(Bank bank) {
         this.bank = bank;
     }
 

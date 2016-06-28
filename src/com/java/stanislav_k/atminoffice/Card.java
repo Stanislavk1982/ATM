@@ -1,4 +1,4 @@
-package com.java.Stanislav.ATM;
+package com.java.stanislav_k.atminoffice;
 
 public class Card {
     private String idCard;
